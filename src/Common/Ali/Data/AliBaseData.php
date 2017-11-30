@@ -76,6 +76,7 @@ abstract class AliBaseData extends BaseData
 
         $signData = [
             // 公共参数
+            'partner'        => $this->partner,
             'app_id'        => $this->appId,
             'method'        => $this->method,
             'format'        => $this->format,

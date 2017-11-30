@@ -19,6 +19,8 @@ final class AliConfig extends ConfigInterface
     // 支付宝分配给开发者的应用ID
     public $appId;
 
+    public $partner;
+
     // 	接口名称
     public $method;// 参考 定义的常量
 
@@ -65,6 +67,12 @@ final class AliConfig extends ConfigInterface
             $this->appId = $config['app_id'];
         } else {
             throw new PayException('支付宝应用ID错误，请检查');
+        }
+
+        if (key_exists('partner', $config) && is_numeric($config['partner'])) {
+            $this->partner = $config['partner'];
+        } else {
+            throw new PayException('支付宝partnerID错误，请检查');
         }
 
         // 初始 支付宝异步通知地址，可为空
